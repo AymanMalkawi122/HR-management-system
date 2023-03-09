@@ -1,15 +1,126 @@
-th,
-td {
-    border: 1px solid black;
-}
-
-td,
-th {
-    text-align: center;
-}
-
-table {
+main {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    background-color: whitesmoke;
+    padding-bottom: 3%;
+    padding-top: 3%;
+}
+
+.collapsible {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 7px;
+    width: 100%;
+    text-align: left;
+    font-size: 15px;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+.active,
+.collapsible:hover {
+    background-color: #ccc;
+}
+
+#administrationEmployees {
+    background:
+        linear-gradient(135deg, #708090 21px, #d9ecff 22px, #d9ecff 24px, transparent 24px, transparent 67px, #d9ecff 67px, #d9ecff 69px, transparent 69px),
+        linear-gradient(225deg, #708090 21px, #d9ecff 22px, #d9ecff 24px, transparent 24px, transparent 67px, #d9ecff 67px, #d9ecff 69px, transparent 69px)0 64px;
+    background-color: #708090;
+    background-size: 64px 128px;
+}
+
+#marketingEmployees {
+    background:
+        linear-gradient(45deg, #92baac 45px, transparent 45px)64px 64px,
+        linear-gradient(45deg, #92baac 45px, transparent 45px, transparent 91px, #e1ebbd 91px, #e1ebbd 135px, transparent 135px),
+        linear-gradient(-45deg, #92baac 23px, transparent 23px, transparent 68px, #92baac 68px, #92baac 113px, transparent 113px, transparent 158px, #92baac 158px);
+    background-color: #e1ebbd;
+    background-size: 128px 128px;
+}
+
+#developmentEmployees {
+    background-color: #556;
+    background-image: linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+        linear-gradient(150deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+        linear-gradient(30deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+        linear-gradient(150deg, #445 12%, transparent 12.5%, transparent 87%, #445 87.5%, #445),
+        linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a),
+        linear-gradient(60deg, #99a 25%, transparent 25.5%, transparent 75%, #99a 75%, #99a);
+    background-size: 80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+}
+
+#financeEmployees {
+    --s: 120px;
+    --c1: #4E395D;
+    --c2: #8EBE94;
+
+    --_g: var(--c1) 15%, var(--c2) 0 28%, #0000 0 72%, var(--c2) 0 85%, var(--c1) 0;
+    background:
+        conic-gradient(from 90deg at 2px 2px, #0000 25%, var(--c1) 0) -1px -1px,
+        linear-gradient(-45deg, var(--_g)), linear-gradient(45deg, var(--_g)),
+        conic-gradient(from 90deg at 40% 40%, var(--c1) 25%, var(--c2) 0) calc(var(--s)/-5) calc(var(--s)/-5);
+    background-size: var(--s) var(--s);
+}
+
+#employeesDisplay {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 99.5%;
+}
+
+#employeesDisplay button {
+    margin-top: 0.5%;
+}
+
+.cardsDisplay {
+    display: none;
+    align-content: space-between;
+    justify-content: flex-start;
+    align-items: top;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.employeeCard {
+    display: flex;
+    align-content: space-between;
+    word-break: break-word;
+    align-items: center;
+    flex-direction: column;
+    width: 20%;
+    margin: 1%;
+    border: 2px solid;
+    border-radius: 7%;
+    padding: 1%;
+}
+
+#administrationEmployees .employeeCard {
+    background-color: rgb(230, 41, 41);
+}
+
+#marketingEmployees .employeeCard {
+    background-color: rgb(64, 206, 24);
+}
+
+#developmentEmployees .employeeCard {
+    background-color: rgb(190, 200, 46);
+}
+
+#financeEmployees .employeeCard {
+    background-color: rgb(47, 33, 255);
+}
+
+.employeeCard img {
+    width: 90%;
+    object-fit: scale-down;
+    border-radius: 4%;
+}
+
+.cardsDisplay .employeeCard>* {
+    margin: 10%;
 }
