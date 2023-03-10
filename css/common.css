@@ -1,0 +1,60 @@
+header {
+  background-color: rgb(31, 25, 25);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#siteName {
+  font-size: 150%;
+  font-family: cursive;
+}
+
+.navBarElement {
+  border-radius: 8%;
+  padding: 1%;
+  margin-right: 10%;
+}
+
+header a {
+  color: #ece7e7;
+  text-decoration: none;
+  transition: color 0.7s;
+  transition: background-color 0.5s;
+}
+
+a+a:hover {
+  background-color: rgb(49, 100, 175);
+  color: rgb(29, 27, 27);
+}
+
+
+footer {
+  display: flex;
+  background-color: rgb(31, 25, 25);
+  justify-content: space-between;
+  height: auto;
+}
+
+footer h4 {
+  color: antiquewhite;
+  font-size: large;
+  padding-left: 2%;
+  white-space: nowrap;
+}
+
+footer div a i,
+footer div i {
+  color: antiquewhite;
+}
+
+footer div {
+  margin: 2%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#contactInfo {
+  display: flex;
+  gap: 10%;
+}

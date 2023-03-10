@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title> 
+    <title>Home</title>
     <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/home.css">
     <script src="https://kit.fontawesome.com/4329b56d05.js" crossorigin="anonymous"></script>
 </head>
@@ -14,17 +15,68 @@
 
 <body>
     <header>
+        <a class="navBarElement" id="siteName">HRSystem</a>
         <a Href="./index.html" class="navBarElement">Home</a>
         <a Href="./accounting.html" class="navBarElement">accounting</a>
     </header>
 
     <main>
-        <table id="Employees">
-            <tr>
-              <th>Employee Name</th>
-              <th>Salary</th>
-            </tr>
-        </table>
+        <form id="newEmployee">
+
+            <label for="fname">First name:</label><br>
+            <input type="text" id="fname" name="fname"><br><br>
+
+            <p>Select your Department </p><br>
+
+            <input type="radio" id="Administration" name="Department">
+            <label for="Administration">Administration</label><br>
+
+            <input type="radio" id="Marketing" name="Department">
+            <label for="Marketing">Marketing</label><br>
+
+            <input type="radio" id="Development" name="Department">
+            <label for="Development">Development</label><br>
+
+            <input type="radio" id="Finance" name="Department">
+            <label for="Finance">Finance</label><br><br>
+
+            <p>Select your Level </p><br>
+
+            <input type="radio" id="Junior" name="Level">
+            <label for="Junior">Junior</label><br>
+
+            <input type="radio" id="Mid-Senior" name="Level">
+            <label for="Mid-Senior">Mid-Senior</label><br>
+
+            <input type="radio" id="Senior" name="Level">
+            <label for="Senior">Senior</label><br><br>
+
+            <label for="URL">Image URL:</label><br>
+            <input type="text" id="URL" name="image"><br><br>
+
+            <input type="submit" value="Submit">
+
+        </form>
+
+
+        <div id="employeesDisplay">
+
+            <button type="button" class="collapsible">Administration Employees</button>
+            <section class="cardsDisplay" id="administrationEmployees">
+            </section>
+
+            <button type="button" class="collapsible">Marketing Employees</button>
+            <section class="cardsDisplay" id="marketingEmployees">
+            </section>
+
+            <button type="button" class="collapsible">Development Employees</button>
+            <section class="cardsDisplay" id="developmentEmployees">
+            </section>
+
+            <button type="button" class="collapsible">Finance Employees</button>
+            <section class="cardsDisplay" id="financeEmployees">
+            </section>
+        </div>
     </main>
 
     <footer>
