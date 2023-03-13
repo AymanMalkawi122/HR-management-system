@@ -1,6 +1,6 @@
 "use strict";
 
-let employees = [];
+let employee;
 let form = document.getElementById('newEmployee')
 let content;
 let Administration = document.getElementById("administrationEmployees");
@@ -8,7 +8,7 @@ let Marketing = document.getElementById("marketingEmployees");
 let Development = document.getElementById("developmentEmployees");
 let Finance = document.getElementById("financeEmployees");
 let collection = document.getElementsByClassName("collapsible");
-
+let key = "employeesData";
 
 for (let index = 0; index < collection.length; index++) {
 
@@ -25,7 +25,7 @@ for (let index = 0; index < collection.length; index++) {
     });
 }
 
-function displayRadioValue(name) {
+function getRadioValue(name) {
     let ele = document.getElementsByName(name);
 
     for (let index = 0; index < ele.length; index++) {
@@ -34,27 +34,54 @@ function displayRadioValue(name) {
         }
     }
 }
+
 form.addEventListener("submit", submitHandler)
 
 function submitHandler(event) {
     event.preventDefault();
-    console.log(event)
     let newName = event.target.fname.value;
-    let newDepartment = displayRadioValue('Department');
-    let newLevel = displayRadioValue('Level');
+    let newDepartment = getRadioValue('Department');
+    let newLevel = getRadioValue('Level');
     let newURL = event.target.URL.value;
-    employees.push(new Employee(new employeeStruct(newName, newDepartment, newLevel, newURL)));
-    employees[employees.length - 1].generateData();
-    employees[employees.length - 1].render();
+    employee=new Employee(new employeeStruct(newName, newDepartment, newLevel, newURL));
+    employee.generateData();
+    employee.render();
+    saveData(employee);
 }
 
 function randomFun(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
+
+function saveData(obj) {
+    if (JSON.parse(localStorage.getItem(key) || "[]") == null) {
+        let data=[];
+        data.push(obj);
+        localStorage.setItem(key, JSON.stringify(data));
+        return;
+    }
+    let data = JSON.parse(localStorage.getItem(key) || "[]");
+    data.push(obj);
+    localStorage.setItem(key, JSON.stringify(data));
+}
+
+function getData(key) {
+    return JSON.parse(localStorage.getItem(key) || "[]");
+}
+
+window.onload = function () {
+    let allEmployees = getData(key);
+    if(allEmployees==null)
+    return ;
+    for (let index = 0; index < allEmployees.length; index++) {
+        let employeeInstance = new Employee(allEmployees[index]);
+        employeeInstance.render();
+    }
+}
+
 //employees struct
 function employeeStruct(fullName, department, level, image) {
     this.fullName = fullName;
-    console.log(department, level);
     if (department == "Administration" || department == "Marketing" || department == "Development" || department == "Finance")
         this.department = department;
     else this.department = "invalid";
@@ -65,13 +92,15 @@ function employeeStruct(fullName, department, level, image) {
 
     this.image = image;
 }
-//employees class
 
+//employees class
 function Employee(employee) {
     this.fullName = employee.fullName;
     this.department = employee.department;
     this.level = employee.level;
     this.image = employee.image;
+    this.salary = employee.salary;
+    this.ID = employee.ID;
 }
 
 Employee.prototype.IDMap = new Map();
@@ -105,11 +134,11 @@ Employee.prototype.findDepartment = function () {
     return (this.department == "Administration") ? Administration :
         (this.department == "Marketing") ? Marketing :
             (this.department == "Development") ? Development :
-                Finance;
+                (this.department == "Finance") ? Finance : null;
 }
 
 Employee.prototype.render = function () {
-    let employeeCard = document.createElement("div")
+    let employeeCard = document.createElement("div");
     let employeeSection = this.findDepartment();
 
     let imgElement = document.createElement('img');
@@ -121,6 +150,6 @@ Employee.prototype.render = function () {
     employeeCard.appendChild(employeeInfo);
     employeeCard.classList.add("employeeCard");
     employeeSection.appendChild(employeeCard);
-
 }
 
+// localStorage.clear();

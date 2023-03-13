@@ -1,3 +1,8 @@
+html,body{
+height: 100%;
+width: 100%;
+}
+
 header {
   background-color: rgb(31, 25, 25);
   display: flex;
@@ -28,6 +33,10 @@ a+a:hover {
   color: rgb(29, 27, 27);
 }
 
+main{
+  min-height: 82%;
+  height: auto;
+}
 
 footer {
   display: flex;
