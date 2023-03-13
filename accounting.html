@@ -8,6 +8,7 @@
     <title>Accounting</title>
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/accounting.css">
     <script src="https://kit.fontawesome.com/4329b56d05.js" crossorigin="anonymous"></script>
 </head>
 
@@ -19,7 +20,22 @@
     </header>
 
     <main>
-        
+        <table id="employeesTable">
+            <thead>
+                <tr>
+                    <th>Department</th>
+                    <th>Number of Employees</th>
+                    <th>Average Salary</th>
+                    <th>Total Salary</th>
+                </tr>
+            </thead>
+
+            <tbody id="tableBody">
+            </tbody>
+
+            <tfoot id="tableFoot">
+            </tfoot>
+        </table>
     </main>
 
     <footer>
@@ -35,6 +51,7 @@
             <i class="fa-regular fa-copyright"></i>
         </div>
     </footer>
+    <script src="./js/accounting.js"></script>
 </body>
 
 </html>
